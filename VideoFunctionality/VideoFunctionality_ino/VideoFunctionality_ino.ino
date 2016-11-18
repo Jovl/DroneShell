@@ -14,8 +14,18 @@ Servo serv2;
 
 void setup() {
   Serial.begin(9600);
+  
   serv1.attach(9);
   serv2.attach(10);
+
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  
+  serv1.write(0);
+  serv2.write(180);
+  delay(3000);
 }
 
 void loop() {
@@ -33,11 +43,38 @@ void loop() {
     delay(2000);
     
     serv1.write(180);
-    serv2.write(180);
+    serv2.write(0);
+    lightsOff();
+    delay(20000);
+
+     serv1.write(0);
+     serv2.write(180);
+
     
     
   } else {
     // TODO: LOWER THE SAILS, SAVOY?
+    serv1.write(0);
+    serv2.write(180);
+    lightsOn();
+    delay(1000);
+    lightsOff();
   }
-  delay(2500);
+  delay(1000);
 }
+
+void lightsOn(){
+  digitalWrite(3, HIGH);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(4, HIGH);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(5, HIGH);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(6, HIGH);   // turn the LED on (HIGH is the voltage level)
+}
+
+
+void lightsOff(){
+  digitalWrite(3, LOW);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(4, LOW);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(5, LOW);   // turn the LED on (HIGH is the voltage level)
+  digitalWrite(6, LOW);   // turn the LED on (HIGH is the voltage level)
+}
+
