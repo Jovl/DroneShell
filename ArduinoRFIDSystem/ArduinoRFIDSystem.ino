@@ -99,8 +99,6 @@ void loop(){
        }        
     }
     
-    
-    
     rfid.halt();
 
 }
